@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Malik Shaikh - Software Engineer &amp; Technical PM</title>
+<meta name="description" content="Portfolio of Malik Shaikh - Software Engineer specializing in React, Python, AI-augmented project delivery.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+–bg: #0a0a0f;
+–bg-card: #111118;
+–bg-card-hover: #16161f;
+–border: #1e1e2a;
+–border-hover: #2a2a3a;
+–text: #e4e4ef;
+–text-dim: #7a7a8e;
+–text-muted: #4a4a5e;
+–accent: #22d3ee;
+–accent-dim: rgba(34, 211, 238, 0.1);
+–accent-glow: rgba(34, 211, 238, 0.15);
+–green: #4ade80;
+–green-dim: rgba(74, 222, 128, 0.1);
+–orange: #fb923c;
+–orange-dim: rgba(251, 146, 60, 0.1);
+–purple: #a78bfa;
+–purple-dim: rgba(167, 139, 250, 0.1);
+–pink: #f472b6;
+–pink-dim: rgba(244, 114, 182, 0.1);
+–mono: ‘JetBrains Mono’, monospace;
+–sans: ‘Sora’, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+background: var(–bg);
+color: var(–text);
+font-family: var(–sans);
+line-height: 1.7;
+overflow-x: hidden;
+}
+
+body::after {
+content: ‘’;
+position: fixed;
+top: 0; left: 0; right: 0; bottom: 0;
+background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+pointer-events: none;
+z-index: 9999;
+}
+
+.grid-bg {
+position: fixed;
+inset: 0;
+background-image: linear-gradient(rgba(34, 211, 238, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(34, 211, 238, 0.03) 1px, transparent 1px);
+background-size: 60px 60px;
+z-index: 0;
+}
+
+.orb { position: fixed; border-radius: 50%; filter: blur(120px); z-index: 0; pointer-events: none; }
+.orb-1 { width: 600px; height: 600px; background: rgba(34, 211, 238, 0.06); top: -200px; right: -200px; }
+.orb-2 { width: 500px; height: 500px; background: rgba(167, 139, 250, 0.05); bottom: 20%; left: -150px; }
+.orb-3 { width: 400px; height: 400px; background: rgba(74, 222, 128, 0.04); bottom: -100px; right: 10%; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10, 10, 15, 0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(–border); }
+nav .container { display: flex; justify-content: space-between; align-items: center; height: 64px; }
+.nav-logo { font-family: var(–mono); font-weight: 700; font-size: 18px; color: var(–accent); text-decoration: none; }
+.nav-logo span { color: var(–text-muted); }
+.nav-links { display: flex; gap: 32px; }
+.nav-links a { font-family: var(–mono); font-size: 13px; color: var(–text-dim); text-decoration: none; letter-spacing: 0.5px; transition: color 0.3s; }
+.nav-links a:hover { color: var(–accent); }
+.nav-links a::before { content: ’// ’; color: var(–text-muted); }
+
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+.nav-toggle span { display: block; width: 24px; height: 2px; background: var(–text-dim); margin: 5px 0; transition: 0.3s; }
+
+.hero { min-height: 100vh; display: flex; align-items: center; padding-top: 64px; }
+.hero-content { max-width: 800px; }
+.hero-tag { font-family: var(–mono); font-size: 13px; color: var(–green); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 24px; display: inline-flex; align-items: center; gap: 8px; }
+.hero-tag .dot { width: 8px; height: 8px; background: var(–green); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse {
+0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.4); }
+50% { opacity: 0.7; box-shadow: 0 0 0 8px rgba(74, 222, 128, 0); }
+}
+.hero h1 { font-family: var(–sans); font-size: clamp(40px, 6vw, 72px); font-weight: 700; line-height: 1.1; margin-bottom: 24px; letter-spacing: -2px; }
+.hero h1 .highlight { background: linear-gradient(135deg, var(–accent), var(–purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-desc { font-size: 17px; color: var(–text-dim); max-width: 600px; margin-bottom: 40px; line-height: 1.8; }
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+.btn { font-family: var(–mono); font-size: 14px; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 500; transition: all 0.3s; cursor: pointer; border: none; display: inline-flex; align-items: center; gap: 8px; }
+.btn-primary { background: var(–accent); color: var(–bg); }
+.btn-primary:hover { box-shadow: 0 0 30px rgba(34, 211, 238, 0.3); transform: translateY(-2px); }
+.btn-outline { background: transparent; color: var(–text-dim); border: 1px solid var(–border); }
+.btn-outline:hover { border-color: var(–accent); color: var(–accent); transform: translateY(-2px); }
+
+.stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(–border); border: 1px solid var(–border); border-radius: 12px; overflow: hidden; margin-bottom: 100px; }
+.stat { background: var(–bg-card); padding: 32px 24px; text-align: center; transition: background 0.3s; }
+.stat:hover { background: var(–bg-card-hover); }
+.stat-num { font-family: var(–mono); font-size: 32px; font-weight: 700; color: var(–accent); display: block; }
+.stat-label { font-size: 13px; color: var(–text-dim); margin-top: 4px; font-family: var(–mono); letter-spacing: 0.5px; }
+
+section { padding: 80px 0; }
+.section-label { font-family: var(–mono); font-size: 12px; color: var(–accent); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; }
+.section-title { font-size: clamp(28px, 4vw, 42px); font-weight: 700; letter-spacing: -1px; margin-bottom: 48px; }
+.section-title .dim { color: var(–text-muted); }
+
+.projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.project-card { background: var(–bg-card); border: 1px solid var(–border); border-radius: 16px; padding: 32px; transition: all 0.4s; position: relative; overflow: hidden; }
+.project-card::before { content: ‘’; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(–accent), transparent); opacity: 0; transition: opacity 0.4s; }
+.project-card:hover { border-color: var(–border-hover); background: var(–bg-card-hover); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+.project-card:hover::before { opacity: 1; }
+.project-card.featured { grid-column: 1 / -1; }
+.project-num { font-family: var(–mono); font-size: 12px; color: var(–text-muted); margin-bottom: 16px; }
+.project-card h3 { font-size: 22px; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.5px; }
+.project-type { font-family: var(–mono); font-size: 12px; color: var(–text-dim); margin-bottom: 16px; }
+.project-desc { font-size: 15px; color: var(–text-dim); line-height: 1.7; margin-bottom: 20px; }
+.tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag { font-family: var(–mono); font-size: 11px; padding: 4px 12px; border-radius: 4px; letter-spacing: 0.5px; }
+.tag-cyan { background: var(–accent-dim); color: var(–accent); }
+.tag-green { background: var(–green-dim); color: var(–green); }
+.tag-orange { background: var(–orange-dim); color: var(–orange); }
+.tag-purple { background: var(–purple-dim); color: var(–purple); }
+.tag-pink { background: var(–pink-dim); color: var(–pink); }
+
+.ai-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.ai-card { background: var(–bg-card); border: 1px solid var(–border); border-radius: 16px; padding: 28px; transition: all 0.4s; }
+.ai-card:hover { border-color: var(–border-hover); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+.ai-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 20px; }
+.ai-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 10px; }
+.ai-card p { font-size: 14px; color: var(–text-dim); line-height: 1.7; }
+
+.timeline { position: relative; }
+.timeline::before { content: ‘’; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, var(–accent), var(–purple), transparent); }
+.timeline-item { padding-left: 40px; padding-bottom: 48px; position: relative; }
+.timeline-item::before { content: ‘’; position: absolute; left: -4px; top: 8px; width: 9px; height: 9px; border-radius: 50%; background: var(–accent); box-shadow: 0 0 12px rgba(34, 211, 238, 0.4); }
+.timeline-date { font-family: var(–mono); font-size: 12px; color: var(–accent); letter-spacing: 1px; margin-bottom: 8px; }
+.timeline-item h3 { font-size: 20px; font-weight: 600; margin-bottom: 4px; }
+.timeline-company { font-size: 14px; color: var(–text-dim); margin-bottom: 14px; font-style: italic; }
+.timeline-highlights { list-style: none; padding: 0; }
+.timeline-highlights li { font-size: 14px; color: var(–text-dim); line-height: 1.7; padding-left: 20px; position: relative; margin-bottom: 6px; }
+.timeline-highlights li::before { content: ‘>’; font-family: var(–mono); color: var(–text-muted); position: absolute; left: 0; }
+
+.stack-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+.stack-item { background: var(–bg-card); border: 1px solid var(–border); border-radius: 10px; padding: 20px 16px; text-align: center; transition: all 0.3s; font-family: var(–mono); font-size: 13px; color: var(–text-dim); }
+.stack-item:hover { border-color: var(–accent); color: var(–accent); background: var(–accent-dim); transform: translateY(-2px); }
+
+.contact-section { text-align: center; padding: 100px 0; }
+.contact-section h2 { font-size: clamp(32px, 5vw, 52px); font-weight: 700; letter-spacing: -1px; margin-bottom: 16px; }
+.contact-section p { color: var(–text-dim); font-size: 17px; margin-bottom: 40px; }
+.contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+footer { border-top: 1px solid var(–border); padding: 32px 0; text-align: center; }
+footer p { font-family: var(–mono); font-size: 12px; color: var(–text-muted); }
+footer .accent { color: var(–accent); }
+
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.gradient-text { background: linear-gradient(135deg, var(–accent), var(–purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+@media (max-width: 768px) {
+.nav-links { display: none; }
+.nav-toggle { display: block; }
+.nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: rgba(10, 10, 15, 0.95); padding: 24px; gap: 20px; border-bottom: 1px solid var(–border); }
+.stats-bar { grid-template-columns: repeat(2, 1fr); }
+.projects-grid { grid-template-columns: 1fr; }
+.project-card.featured { grid-column: 1; }
+.ai-grid { grid-template-columns: 1fr; }
+.hero h1 { letter-spacing: -1px; }
+}
+</style>
+
+</head>
+<body>
+
+<div class="grid-bg"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<nav>
+  <div class="container">
+    <a href="#" class="nav-logo">malik<span>.dev</span></a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="#projects">projects</a>
+      <a href="#ai">ai_workflows</a>
+      <a href="#experience">experience</a>
+      <a href="#stack">stack</a>
+      <a href="#contact">contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-tag"><span class="dot"></span> Available for opportunities</div>
+      <h1>I build things<br>that <span class="highlight">ship.</span></h1>
+      <p class="hero-desc">Software Engineer with 9 years across banking, telecom &amp; industrial automation. I lead technical projects from kickoff to launch, write production React &amp; Python, and use AI tools daily to eliminate busywork. Currently exploring PM roles where engineering depth meets delivery speed.</p>
+      <div class="hero-actions">
+        <a href="mailto:malik22shaikh@gmail.com" class="btn btn-primary">Get in touch</a>
+        <a href="https://github.com/Malik2206" class="btn btn-outline" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="stats-bar reveal">
+    <div class="stat"><span class="stat-num">9+</span><span class="stat-label">years exp</span></div>
+    <div class="stat"><span class="stat-num">10M+</span><span class="stat-label">daily records</span></div>
+    <div class="stat"><span class="stat-num">500+</span><span class="stat-label">engineers served</span></div>
+    <div class="stat"><span class="stat-num">0</span><span class="stat-label">rollbacks</span></div>
+  </div>
+</div>
+
+<section id="projects">
+  <div class="container">
+    <div class="section-label reveal">// Featured Work</div>
+    <h2 class="section-title reveal">Projects <span class="dim">I've shipped</span></h2>
+    <div class="projects-grid">
+
+```
+  <div class="project-card featured reveal">
+    <div class="project-num">01 / Personal Project</div>
+    <h3>SORTED. &mdash; Premium Perfume E-Commerce</h3>
+    <div class="project-type">Full-Stack Platform &bull; Solo Build</div>
+    <p class="project-desc">Designed and built a complete e-commerce platform from scratch. React frontend with product catalog, cart, and checkout flow. FastAPI backend with 15+ route modules, PostgreSQL with normalized schema. JWT auth with role-based access control, Razorpay payment integration with webhook verification, security middleware (CORS, rate limiting, input sanitization). Containerized with Docker &amp; docker-compose for single-command deployment.</p>
+    <div class="tag-row">
+      <span class="tag tag-cyan">React</span>
+      <span class="tag tag-green">FastAPI</span>
+      <span class="tag tag-purple">PostgreSQL</span>
+      <span class="tag tag-orange">Docker</span>
+      <span class="tag tag-pink">Razorpay</span>
+      <span class="tag tag-cyan">JWT / RBAC</span>
+    </div>
+  </div>
+
+  <div class="project-card reveal">
+    <div class="project-num">02 / Infosys &bull; HSBC</div>
+    <h3>Juniper Platform</h3>
+    <div class="project-type">Internal Infrastructure Tool &bull; 500+ Engineers</div>
+    <p class="project-desc">Led delivery of Infosys's internal platform for Hadoop/cloud interface management. Owned sprint planning, stakeholder alignment, and cross-team coordination. Redesigned React component architecture, reducing manual config effort by 30% and onboarding time from 2 weeks to 3 days.</p>
+    <div class="tag-row">
+      <span class="tag tag-cyan">React</span>
+      <span class="tag tag-green">Java</span>
+      <span class="tag tag-purple">Hadoop/HDFS</span>
+      <span class="tag tag-orange">Docker</span>
+    </div>
+  </div>
+
+  <div class="project-card reveal">
+    <div class="project-num">03 / AI + PM</div>
+    <h3>AI-Powered PM Workflows</h3>
+    <div class="project-type">Productivity Automation &bull; Daily Use</div>
+    <p class="project-desc">Built reusable AI workflows: client call transcripts to structured task cards with acceptance criteria (Claude); feature requests to sprint-ready breakdowns (ChatGPT); PR descriptions to client-friendly changelogs (Cursor). Reduced spec-writing time by ~60%.</p>
+    <div class="tag-row">
+      <span class="tag tag-purple">Claude</span>
+      <span class="tag tag-green">ChatGPT</span>
+      <span class="tag tag-orange">Cursor</span>
+      <span class="tag tag-cyan">Prompt Eng.</span>
+    </div>
+  </div>
+
+  <div class="project-card reveal">
+    <div class="project-num">04 / Education</div>
+    <h3>Data Engineering Curriculum</h3>
+    <div class="project-type">5-Phase Learning Roadmap &bull; AI Co-Authored</div>
+    <p class="project-desc">Designed a comprehensive data engineering curriculum with Claude as a co-author. Covers OLTP/OLAP, star schema, ETL/ELT, Apache Spark, Airflow, GCP (Pub/Sub, Dataflow), Python OOP, and Docker. Complete standalone educational documents across 5 structured phases.</p>
+    <div class="tag-row">
+      <span class="tag tag-green">GCP</span>
+      <span class="tag tag-purple">Spark</span>
+      <span class="tag tag-orange">Airflow</span>
+      <span class="tag tag-cyan">Python</span>
+      <span class="tag tag-pink">Claude AI</span>
+    </div>
+  </div>
+
+  <div class="project-card reveal">
+    <div class="project-num">05 / Infosys &bull; HSBC</div>
+    <h3>HSBC Data Pipelines</h3>
+    <div class="project-type">Batch Processing &bull; Regulatory Compliance</div>
+    <p class="project-desc">Engineered SQL and Python-based batch data pipelines processing 10M+ records daily for HDFS-to-analytics ingestion. Achieved 99.5% reconciliation accuracy and supported 4 consecutive clean regulatory audits.</p>
+    <div class="tag-row">
+      <span class="tag tag-cyan">Python</span>
+      <span class="tag tag-green">SQL</span>
+      <span class="tag tag-purple">HDFS</span>
+      <span class="tag tag-orange">CI/CD</span>
+    </div>
+  </div>
+
+  <div class="project-card reveal">
+    <div class="project-num">06 / Allied Digital &bull; Axis Bank</div>
+    <h3>Finacle Core Banking Delivery</h3>
+    <div class="project-type">Team Lead &bull; 6-Person Cross-Functional Team</div>
+    <p class="project-desc">Led end-to-end delivery of Finacle Core Banking. Ran sprints, daily syncs, risk tracking, and release governance. 15+ releases with zero rollbacks. Built API regression suite (50+ test cases) cutting manual QA by 60%. Maintained 99.9% uptime.</p>
+    <div class="tag-row">
+      <span class="tag tag-green">Agile/Scrum</span>
+      <span class="tag tag-purple">JBoss</span>
+      <span class="tag tag-orange">Postman</span>
+      <span class="tag tag-cyan">Java</span>
+    </div>
+  </div>
+
+</div>
+```
+
+  </div>
+</section>
+
+<section id="ai" class="ai-section">
+  <div class="container">
+    <div class="section-label reveal">// AI-Native Workflows</div>
+    <h2 class="section-title reveal">How I use <span class="gradient-text">AI daily</span></h2>
+    <div class="ai-grid">
+      <div class="ai-card reveal">
+        <div class="ai-icon" style="background: var(--accent-dim); color: var(--accent);">&#9999;</div>
+        <h3>Spec Writing</h3>
+        <p>Feed rough client requirements into Claude to generate structured technical briefs with acceptance criteria, edge cases, and task breakdowns. What used to take 2 hours now takes 20 minutes.</p>
+      </div>
+      <div class="ai-card reveal">
+        <div class="ai-icon" style="background: var(--purple-dim); color: var(--purple);">&#128269;</div>
+        <h3>PR Reviews &amp; Changelogs</h3>
+        <p>Use Cursor to parse PR descriptions and auto-generate client-friendly changelogs and sprint review summaries. Keeps stakeholders informed without manual translation work.</p>
+      </div>
+      <div class="ai-card reveal">
+        <div class="ai-icon" style="background: var(--green-dim); color: var(--green);">&#9889;</div>
+        <h3>Meeting to Action Items</h3>
+        <p>Client call transcripts go through Claude to extract requirements, flag ambiguities, and produce Linear-style task cards with owners and deadlines. Async-first, zero busywork.</p>
+      </div>
+      <div class="ai-card reveal">
+        <div class="ai-icon" style="background: var(--orange-dim); color: var(--orange);">&#128736;</div>
+        <h3>Prompt Templates</h3>
+        <p>Built a library of reusable prompts for recurring PM tasks: scope-change impact analysis, risk register updates, sprint retros, and technical handoff docs.</p>
+      </div>
+      <div class="ai-card reveal">
+        <div class="ai-icon" style="background: var(--pink-dim); color: var(--pink);">&#128218;</div>
+        <h3>Documentation at Scale</h3>
+        <p>Co-authored a 5-phase data engineering curriculum with Claude &mdash; complete standalone educational docs covering Spark, Airflow, GCP, Docker, and more. AI as a knowledge creation partner.</p>
+      </div>
+      <div class="ai-card reveal">
+        <div class="ai-icon" style="background: var(--accent-dim); color: var(--accent);">&#127759;</div>
+        <h3>Rapid Prototyping</h3>
+        <p>Use ChatGPT and Cursor for quick automation scripts, task breakdown generation from feature requests, and async communication drafts (Slack, Loom scripts).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="container">
+    <div class="section-label reveal">// Career Path</div>
+    <h2 class="section-title reveal">Experience <span class="dim">timeline</span></h2>
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-date">SEP 2022 &mdash; PRESENT</div>
+        <h3>Technology Analyst &mdash; Technical Lead</h3>
+        <div class="timeline-company">Infosys Limited &bull; HSBC, British Telecom</div>
+        <ul class="timeline-highlights">
+          <li>Led Juniper platform delivery: sprint planning, stakeholder alignment, cross-team coordination for 500+ engineer user base</li>
+          <li>Redesigned React frontend architecture for cloud interface management</li>
+          <li>Engineered Python/SQL data pipelines processing 10M+ records daily with 99.5% accuracy</li>
+          <li>Standardized Docker CI/CD workflows, reducing environment failures by 40%</li>
+          <li>Refactored 3 Java API endpoints, cutting response time by 20%</li>
+        </ul>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-date">FEB 2022 &mdash; SEP 2022</div>
+        <h3>Tech Lead &mdash; Application Delivery</h3>
+        <div class="timeline-company">Allied Digital &bull; Axis Bank</div>
+        <ul class="timeline-highlights">
+          <li>Led 6-person team delivering Finacle Core Banking with 99.9% uptime</li>
+          <li>15+ releases with zero rollbacks via structured change management</li>
+          <li>Built API regression suite (50+ cases), cutting manual QA by 60%</li>
+        </ul>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-date">MAY 2019 &mdash; OCT 2021</div>
+        <h3>Associate Artificial Intelligence</h3>
+        <div class="timeline-company">Interproductec Virtual Labs Pvt Ltd</div>
+        <ul class="timeline-highlights">
+          <li>Built 8+ React dashboard modules as sole frontend developer for industrial automation</li>
+          <li>Developed Python + Django backend services processing 50K+ operational records</li>
+          <li>Coordinated requirements and backlog prioritization with operations managers</li>
+        </ul>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-date">JUL 2017 &mdash; MAY 2019</div>
+        <h3>Application Engineer &mdash; Production Support</h3>
+        <div class="timeline-company">VDA Infosolutions &bull; IDFC First Bank</div>
+        <ul class="timeline-highlights">
+          <li>L1/L2 support for TCS BaNCS core banking, 99.9% SLA across 500+ tickets</li>
+          <li>30+ code migrations and production releases with zero critical incidents</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="container">
+    <div class="section-label reveal">// Tech Stack</div>
+    <h2 class="section-title reveal">Tools <span class="dim">I work with</span></h2>
+    <div class="stack-grid reveal">
+      <div class="stack-item">React</div>
+      <div class="stack-item">Next.js</div>
+      <div class="stack-item">JavaScript</div>
+      <div class="stack-item">Python</div>
+      <div class="stack-item">FastAPI</div>
+      <div class="stack-item">Django</div>
+      <div class="stack-item">Node.js</div>
+      <div class="stack-item">Java</div>
+      <div class="stack-item">SQL</div>
+      <div class="stack-item">PostgreSQL</div>
+      <div class="stack-item">Docker</div>
+      <div class="stack-item">Git</div>
+      <div class="stack-item">CI/CD</div>
+      <div class="stack-item">Linux</div>
+      <div class="stack-item">Hadoop/HDFS</div>
+      <div class="stack-item">Jira</div>
+      <div class="stack-item">Linear</div>
+      <div class="stack-item">Postman</div>
+      <div class="stack-item">Claude AI</div>
+      <div class="stack-item">ChatGPT</div>
+      <div class="stack-item">Cursor</div>
+      <div class="stack-item">Slack</div>
+      <div class="stack-item">Loom</div>
+      <div class="stack-item">Vercel</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="section-label reveal">// Let's talk</div>
+    <h2 class="reveal">Ready to <span class="gradient-text">ship together?</span></h2>
+    <p class="reveal">I'm looking for PM roles where engineering depth meets delivery speed.</p>
+    <div class="contact-links reveal">
+      <a href="mailto:malik22shaikh@gmail.com" class="btn btn-primary">malik22shaikh@gmail.com</a>
+      <a href="https://github.com/Malik2206" class="btn btn-outline" target="_blank">GitHub</a>
+      <a href="tel:+919987244698" class="btn btn-outline">+91 9987244698</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 Malik Shaikh <span class="accent">&bull;</span> Built with intention <span class="accent">&bull;</span> Mumbai, India</p>
+  </div>
+</footer>
+
+<script>
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) { entry.target.classList.add('visible'); }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    e.preventDefault();
+    var target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.querySelector('.nav-links').classList.remove('open');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
